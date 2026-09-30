@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+FitBuddy AI Users
+</title>
+
+
+<style>
+
+body {
+
+    font-family: Arial, sans-serif;
+
+    margin: 30px;
+
+    background: #f4f8fc;
+}
+
+
+.container {
+
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 5px 20px
+        rgba(0,0,0,0.08);
+}
+
+
+table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+
+th,
+td {
+
+    padding: 12px;
+
+    border-bottom:
+        1px solid #ddd;
+
+    text-align: left;
+
+    vertical-align: top;
+}
+
+
+th {
+
+    background: #1677ff;
+
+    color: white;
+}
+
+
+pre {
+
+    white-space: pre-wrap;
+
+    max-width: 450px;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<h1>
+FitBuddy AI - Users & Plans
+</h1>
+
+
+<table>
+
+
+<tr>
+
+<th>ID</th>
+
+<th>Name</th>
+
+<th>Age</th>
+
+<th>Weight</th>
+
+<th>Goal</th>
+
+<th>Intensity</th>
+
+<th>Workout Plan</th>
+
+</tr>
+
+
+{% for user in users %}
+
+
+<tr>
+
+<td>
+{{ user.id }}
+</td>
+
+<td>
+{{ user.name }}
+</td>
+
+<td>
+{{ user.age }}
+</td>
+
+<td>
+{{ user.weight }}
+</td>
+
+<td>
+{{ user.goal }}
+</td>
+
+<td>
+{{ user.intensity }}
+</td>
+
+<td>
+
+<pre>
+{{ user.original_plan }}
+</pre>
+
+</td>
+
+</tr>
+
+
+{% endfor %}
+
+
+</table>
+
+
+</div>
+
+
+</body>
+
+</html>

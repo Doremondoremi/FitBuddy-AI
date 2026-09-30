@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+Your Personalized Workout Plan
+</title>
+
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+
+    margin: 0;
+
+    font-family: Arial, sans-serif;
+
+    background: #f4f8fc;
+
+    color: #1c2738;
+}
+
+
+.container {
+
+    max-width: 950px;
+
+    margin: 35px auto;
+
+    padding: 20px;
+}
+
+
+.title {
+
+    text-align: center;
+
+    color: #1677ff;
+
+    margin-bottom: 30px;
+}
+
+
+.card {
+
+    background: white;
+
+    padding: 28px;
+
+    margin-bottom: 20px;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 25px
+        rgba(30, 60, 100, 0.10);
+}
+
+
+.info-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 12px;
+}
+
+
+.info-item {
+
+    background: #f7faff;
+
+    padding: 14px;
+
+    border-radius: 10px;
+}
+
+
+.info-item strong {
+
+    display: block;
+
+    color: #667085;
+
+    font-size: 13px;
+
+    margin-bottom: 5px;
+}
+
+
+.plan {
+
+    white-space: pre-wrap;
+
+    line-height: 1.7;
+
+    background: #fbfcfe;
+
+    border-left:
+        4px solid #1677ff;
+
+    padding: 20px;
+
+    border-radius: 8px;
+}
+
+
+.tip {
+
+    background: #eef8f0;
+
+    padding: 18px;
+
+    border-radius: 10px;
+
+    line-height: 1.6;
+}
+
+
+textarea {
+
+    width: 100%;
+
+    min-height: 120px;
+
+    padding: 14px;
+
+    border:
+        1px solid #d6deea;
+
+    border-radius: 10px;
+
+    font-size: 15px;
+}
+
+
+button,
+.back {
+
+    display: inline-block;
+
+    margin-top: 14px;
+
+    padding: 12px 20px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #1677ff;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.back {
+
+    background: #64748b;
+
+    margin-left: 8px;
+}
+
+
+.success {
+
+    background: #eaf8ef;
+
+    padding: 14px;
+
+    border-radius: 10px;
+
+    color: #237a3b;
+
+    margin-bottom: 20px;
+}
+
+
+@media(max-width:650px) {
+
+    .info-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<h1 class="title">
+
+🏋️ Your Personalized Workout Plan
+
+</h1>
+
+
+{% if updated %}
+
+<div class="success">
+
+Your workout plan has been updated based on your feedback.
+
+</div>
+
+{% endif %}
+
+
+<!-- USER INFORMATION -->
+
+<div class="card">
+
+<h2>
+User Information
+</h2>
+
+
+<div class="info-grid">
+
+
+<div class="info-item">
+
+<strong>
+Name
+</strong>
+
+{{ username }}
+
+</div>
+
+
+<div class="info-item">
+
+<strong>
+User ID
+</strong>
+
+{{ user_id }}
+
+</div>
+
+
+<div class="info-item">
+
+<strong>
+Age
+</strong>
+
+{{ age }}
+
+</div>
+
+
+<div class="info-item">
+
+<strong>
+Weight
+</strong>
+
+{{ weight }} kg
+
+</div>
+
+
+<div class="info-item">
+
+<strong>
+Fitness Goal
+</strong>
+
+{{ goal }}
+
+</div>
+
+
+<div class="info-item">
+
+<strong>
+Intensity
+</strong>
+
+{{ intensity }}
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- WORKOUT PLAN -->
+
+<div class="card">
+
+<h2>
+🏋️ Workout Plan
+</h2>
+
+
+<div class="plan">
+
+{{ workout_plan }}
+
+</div>
+
+</div>
+
+
+<!-- NUTRITION -->
+
+<div class="card">
+
+<h2>
+🥗 Nutrition Tip
+</h2>
+
+
+<div class="tip">
+
+{{ nutrition_tip }}
+
+</div>
+
+</div>
+
+
+<!-- FEEDBACK -->
+
+<div class="card">
+
+<h2>
+Update Your Workout Plan
+</h2>
+
+
+<form
+action="/submit-feedback"
+method="post"
+>
+
+
+<input
+type="hidden"
+name="user_id"
+value="{{ user_id }}"
+>
+
+
+<textarea
+name="feedback"
+placeholder="Example: Make the plan easier, add more rest days, or reduce the workout duration..."
+required
+></textarea>
+
+
+<br>
+
+
+<button type="submit">
+
+Update Plan
+
+</button>
+
+
+<a
+href="/"
+class="back"
+>
+
+Create Another Plan
+
+</a>
+
+
+</form>
+
+</div>
+
+
+</div>
+
+</body>
+
+</html>
